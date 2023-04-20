@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -17,16 +18,12 @@ public class PlayerController : MonoBehaviour
     
     private void Update()
     {
-        Move();
         _playerPositionSaver.SavePlayerData();
     }
 
-    private void Move()
+    public void Move(Vector2 inputs)
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        Vector3 movement = new Vector3(inputs.y, 0.0f, inputs.x);
         transform.position += movement * _speed * Time.deltaTime;
     }
 }
