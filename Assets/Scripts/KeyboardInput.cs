@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class KeyboardInput : MonoBehaviour
 {
-    [SerializeField] private PlayerController _playerController;
+    [SerializeField] private MoveController _playerController;
     
     private void Update()
     {
