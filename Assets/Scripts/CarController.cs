@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class CarController : MoveController
+public class CarController : MonoBehaviour, IMoveController, IHasLights
 {
     [SerializeField] private float _acceleration = 5f;
     [SerializeField] private float _maxSpeed = 50f;
     [SerializeField] private float _turnSpeed = 100f;
+    [SerializeField] private Light[] _lights;
 
     private Rigidbody _rigidbody;
     private PlayerPositionSaver _playerPositionSaver;
@@ -25,7 +26,7 @@ public class CarController : MoveController
         _playerPositionSaver.SavePlayerData();
     }
 
-    public override void Move(Vector2 inputs)
+    public void Move(Vector2 inputs)
     {
         float horizontal = inputs.y;
         float vertical = inputs.x;
@@ -43,5 +44,14 @@ public class CarController : MoveController
 
         // ограничение максимальной скорости
         _rigidbody.velocity = Vector3.ClampMagnitude(_rigidbody.velocity, _maxSpeed);
+        
+    }
+
+    public void SetLights(bool isOn)
+    {
+        foreach (var light in _lights)
+        {
+            light.enabled = isOn;
+        }
     }
 }

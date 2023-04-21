@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerController : MoveController
+public class PlayerController : MonoBehaviour, IMoveController
 {
     [SerializeField] private float _speed;
     private PlayerPositionSaver _playerPositionSaver;
@@ -21,7 +21,7 @@ public class PlayerController : MoveController
         _playerPositionSaver.SavePlayerData();
     }
 
-    public override void Move(Vector2 inputs)
+    public void Move(Vector2 inputs)
     {
         Vector3 movement = new Vector3(inputs.y, 0.0f, inputs.x);
         transform.position += movement * _speed * Time.deltaTime;

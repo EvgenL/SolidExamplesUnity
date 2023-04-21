@@ -1,9 +1,15 @@
+using System;
 using UnityEngine;
 
-public class KeyboardInput : MonoBehaviour
+public class KeyboardMoveInput : MonoBehaviour
 {
-    [SerializeField] private MoveController _playerController;
-    
+    private IMoveController _playerController;
+
+    private void Start()
+    {
+        _playerController = GetComponent<IMoveController>();
+    }
+
     private void Update()
     {
         var inputs = ProcessInputs();
