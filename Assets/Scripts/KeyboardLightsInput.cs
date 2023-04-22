@@ -6,14 +6,14 @@ namespace DefaultNamespace
     {
         private IHasLights _hasLightsController;
 
-        private void Start()
-        {
-            _hasLightsController = GetComponent<IHasLights>();
-        }
-
         private void Update()
         {
-            _hasLightsController.SetLights(Input.GetKey(KeyCode.Space));
+            _hasLightsController?.SetLights(Input.GetKey(KeyCode.Space));
+        }
+
+        public void SetControlledObject(IHasLights hasLights)
+        {
+            _hasLightsController = hasLights;
         }
     }
 }

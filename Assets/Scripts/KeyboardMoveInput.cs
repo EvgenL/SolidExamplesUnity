@@ -5,11 +5,6 @@ public class KeyboardMoveInput : MonoBehaviour
 {
     private IMoveController _playerController;
 
-    private void Start()
-    {
-        _playerController = GetComponent<IMoveController>();
-    }
-
     private void Update()
     {
         var inputs = ProcessInputs();
@@ -23,5 +18,10 @@ public class KeyboardMoveInput : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         return new Vector2(moveVertical, moveHorizontal);
+    }
+
+    public void SetControlledObject(IMoveController moveController)
+    {
+        _playerController = moveController;
     }
 }

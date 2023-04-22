@@ -8,22 +8,10 @@ public class CarController : MonoBehaviour, IMoveController, IHasLights
     [SerializeField] private Light[] _lights;
 
     private Rigidbody _rigidbody;
-    private PlayerPositionSaver _playerPositionSaver;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _playerPositionSaver = new PlayerPositionSaver(transform);
-    }
-
-    private void Start()
-    {
-        _playerPositionSaver.LoadPlayerData();
-    }
-
-    private void Update()
-    {
-        _playerPositionSaver.SavePlayerData();
     }
 
     public void Move(Vector2 inputs)
